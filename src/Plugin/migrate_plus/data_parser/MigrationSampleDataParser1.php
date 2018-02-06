@@ -5,11 +5,11 @@ namespace Drupal\migration_samples\Plugin\migrate_plus\data_parser;
 use Drupal\migrate_plus\Plugin\migrate_plus\data_parser\Xml;
 
 /**
- * Data parser for the XML.
+ * Data parser for the XML source.
  *
  * @DataParser(
  *   id = "migration_sample_1",
- *   title = @Translation("XML parser plugin")
+ *   title = @Translation("XML data parser")
  * )
  */
 class MigrationSampleDataParser1 extends Xml {
@@ -19,26 +19,26 @@ class MigrationSampleDataParser1 extends Xml {
    */
   protected function fetchNextRow() {
     parent::fetchNextRow();
-    // Set the file name.
+    // Set the file name as one of property in source.
     if (isset($this->currentItem) && !empty($this->currentItem)) {
       $this->currentItem['dummy_unique_id'] = $this->getFileName();
     }
   }
 
   /**
-   * Gets the file name of the processing XML without extension.
+   * Get XML file name without extension.
    *
    * @return string
-   *   xml filename without extension.
+   *   xml filename.
    */
   protected function getFileName() {
-    // Get the current file with full path.
-    $file_path = $this->urls[$this->activeUrl];
+    // Full file path.
+    $path = $this->urls[$this->activeUrl];
 
-    // Separate with the '/' and get the last element.
-    $files = explode('/', $file_path);
+    // Explode with the '/' to get the last element.
+    $files = explode('/', $path);
 
-    // Get the file name without extension.
+    // File name without extension.
     $file_name = explode('.', end($files))[0];
     return $file_name;
   }
