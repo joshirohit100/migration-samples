@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages>
+    <page>
+        <id>1</id>
+        <title>Home1</title>
+        <body>This is a Home Page.</body>
+        <child>
+            <page>
+                <id>2</id>
+                <title>Home2</title>
+                <body>This is a Home Page.</body>
+            </page>
+            <page>
+                <id>3</id>
+                <title>Home3</title>
+                <body>This is a Home Page.</body>
+                <child>
+                    <page>
+                        <id>4</id>
+                        <title>Home4</title>
+                        <body>This is a Home Page.</body>
+                    </page>
+                </child>
+            </page>
+        </child>
+    </page>
+</pages>
