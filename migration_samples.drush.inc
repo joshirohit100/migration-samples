@@ -7,7 +7,7 @@
 /**
  * Implements hook_drush_command().
  */
-function migrate_highwater_example_drush_command() {
+function migration_samples_drush_command() {
   $commands['migration-preprocessing'] = [
     'description' => 'Upgrade drupal 7 theme to drupal 8.',
     'aliases' => ['mpp'],
@@ -23,9 +23,9 @@ function migrate_highwater_example_drush_command() {
 /**
  * Drush command to pre-process json data.
  */
-function drush_migrate_highwater_example_migration_preprocessing() {
+function drush_migration_samples_migration_preprocessing() {
   drush_print(dt('Pre-processing the data...'));
-  $file_path = DRUPAL_ROOT . "/migration_files/preprocess_data.json";
+  $file_path = "Path to the json source file.";
 
   // Read the file content.
   $jsonString = file_get_contents($file_path);
