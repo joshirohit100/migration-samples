@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages>
+    <my_page>
+        <id>1</id>
+        <title>Home1</title>
+        <body>This is a Home Page.</body>
+    </my_page>
+</pages>
