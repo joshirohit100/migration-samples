@@ -1,0 +1,5 @@
+services:
+  sample_mifration_module.post_row_save.event_subscriber:
+    class: Drupal\sample_mifration_module\EventSubscriber\PostRowSaveEventSubscriber
+    tags:
+      - { name: event_subscriber }
