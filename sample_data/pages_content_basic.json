@@ -1,0 +1,39 @@
+{
+  "pages": {
+    "page": [
+      {
+        "id": "1",
+        "title": "Homee",
+        "body": "This is a Home Page.",
+        "city": "City 1",
+        "state": "State 1",
+        "site_url": "http://www.example1.com",
+        "site_name": "Example1.com",
+        "keywords": "home,example1",
+        "date_created": "1512576614"
+      },
+      {
+        "id": "2",
+        "title": "About uss",
+        "body": "This is a About Page.",
+        "city": "City 2",
+        "state": "State 2",
+        "site_url": "http://www.example2.com",
+        "site_name": "Example2.com",
+        "keywords": "about,example2",
+        "date_created": "15125766110"
+      },
+      {
+        "id": "3",
+        "title": "Copyright",
+        "body": "This is a Copyright Page.",
+        "city": "City 2",
+        "state": "State 2",
+        "site_url": "http://www.example3.com",
+        "site_name": "Example3.com",
+        "keywords": "copyright,example3",
+        "date_created": "1512576619"
+      }
+    ]
+  }
+}

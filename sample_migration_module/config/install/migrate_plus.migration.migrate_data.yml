@@ -1,0 +1,70 @@
+id: migrate_data
+label: JSON to drupal migration
+migration_group: default
+
+source:
+  plugin: url
+  urls: "{ur_url}/pages_content_basic.json"
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  item_selector: 2
+
+  fields:
+      -
+        name: page_title
+        label: 'Page Title'
+        selector: title
+      -
+        name: id
+        label: 'Unique Id'
+        selector: id
+      -
+        name: page_body
+        label: 'Page Body'
+        selector: body
+      -
+        name: date_created
+        label: 'Date created'
+        selector: date_created
+
+  ids:
+    id:
+      type: string
+
+
+process:
+  title: page_title
+
+  type:
+    plugin: default_value
+    default_value: migration_sample
+
+  field_my_body/target_id:
+    -
+      plugin: migration_lookup
+      migration: body_to_paragraph
+      no_stub: true
+      source: id
+    -
+      plugin: extract
+      index:
+        - 0
+
+  field_my_body/target_revision_id:
+    -
+      plugin: migration_lookup
+      migration: body_to_paragraph
+      no_stub: true
+      source: id
+    -
+      plugin: extract
+      index:
+        - 1
+
+
+destination:
+  plugin: entity:node
+
+migration_dependencies:
+  required:
+    - body_to_paragraph

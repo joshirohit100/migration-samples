@@ -1,0 +1,41 @@
+id: body_to_paragraph
+label: Body to paragraph example
+migration_group: default
+
+source:
+  plugin: url
+  urls: "http://local.drupal8.com/migration_files/pages_content_basic.json"
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  item_selector: 2
+
+  fields:
+    -
+      name: id
+      label: 'Unique Id'
+      selector: id
+    -
+      name: page_body
+      label: 'Page Body'
+      selector: body
+
+  ids:
+    id:
+      type: string
+
+
+process:
+  type:
+    plugin: default_value
+    default_value: test_paragraph
+
+  field_paragraph_text/value: page_body
+  field_paragraph_text/format:
+    plugin: default_value
+    default_value: basic_html
+
+
+destination:
+  plugin: entity_reference_revisions:paragraph
+
+migration_dependencies: {}
