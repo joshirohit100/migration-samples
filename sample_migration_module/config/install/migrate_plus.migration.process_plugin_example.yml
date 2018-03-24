@@ -1,0 +1,41 @@
+id: process_plugin_example
+label: Process plugin example
+migration_group: default
+
+source:
+  plugin: url
+  urls: "{ur_url}/process_plugin_example.json"
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  item_selector: 2
+
+  fields:
+      -
+        name: page_title
+        label: 'Page Title'
+        selector: title
+      -
+        name: id
+        label: 'Unique Id'
+        selector: id
+      -
+        name: content_type
+        label: 'Content type'
+        selector: type
+
+  ids:
+    id:
+      type: string
+
+
+process:
+  title: page_title
+
+  type:
+    plugin: content_type_plugin
+    source: content_type
+
+destination:
+  plugin: entity:node
+
+migration_dependencies: { }

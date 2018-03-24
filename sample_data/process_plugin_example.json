@@ -1,0 +1,21 @@
+{
+  "pages": {
+    "page": [
+      {
+        "id": "1",
+        "title": "Homee",
+        "type": "ac"
+      },
+      {
+        "id": "2",
+        "title": "About uss",
+        "type": "ac"
+      },
+      {
+        "id": "3",
+        "title": "Copyright",
+        "type": "pg"
+      }
+    ]
+  }
+}
