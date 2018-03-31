@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <user>
+        <uid>1</uid>
+        <uname>user1</uname>
+        <email>user1@email.com</email>
+        <name>User 1</name>
+        <roles>1,2</roles>
+    </user>
+    <user>
+        <uid>2</uid>
+        <uname>user2</uname>
+        <email>user2@email.com</email>
+        <name>User 2</name>
+        <roles>1</roles>
+    </user>
+    <user>
+        <uid>3</uid>
+        <uname>user3</uname>
+        <email>user3@email.com</email>
+        <name>User 3</name>
+        <roles>1,2</roles>
+    </user>
+    <user>
+        <uid>4</uid>
+        <uname>user4</uname>
+        <email>user4@email.com</email>
+        <name>User 4</name>
+        <roles>2</roles>
+    </user>
+    <user>
+        <uid>5</uid>
+        <uname>user5</uname>
+        <email>user5@email.com</email>
+        <name>User 5</name>
+        <roles>1,2</roles>
+    </user>
+</users>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<media_resource>
+    <media mid="1" filename="casino-royale.png"></media>
+    <media mid="2" filename="live-and-let-die.png"></media>
+    <media mid="3" filename="moonraker.png"></media>
+    <media mid="4" filename="diamonds-are-forever.png"></media>
+    <media mid="5" filename="bourne-identity.png"></media>
+    <media mid="6" filename="bourne-supremacy.png"></media>
+    <media mid="7" filename="bourne-ultimatum.png"></media>
+    <media mid="8" filename="fellowship-of-the-ring.png"></media>
+    <media mid="9" filename="two-towers.png"></media>
+    <media mid="10" filename="return-of-the-king.png"></media>
+</media_resource>

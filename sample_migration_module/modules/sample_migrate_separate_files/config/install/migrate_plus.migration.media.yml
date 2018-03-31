@@ -1,0 +1,58 @@
+id: media
+label: Media migration example
+migration_group: default
+
+source:
+  plugin: url
+  urls: "http://local.drupal8.com/migration_files/sample_module_data/separate_files/media.xml"
+  data_fetcher_plugin: http
+  data_parser_plugin: xml
+  item_selector: /media_resource/media
+
+  constants:
+    source_base_path: 'migration_files/sample_module_data/images'
+    destination_base_path: 'public://'
+
+  fields:
+    -
+      name: filename
+      label: 'file name'
+      selector: '@filename'
+    -
+      name: mid
+      label: 'Unique Id'
+      selector: '@mid'
+
+  ids:
+    mid:
+      type: integer
+
+
+process:
+
+  source_full_path:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/source_base_path
+        - filename
+    -
+      plugin: urlencode
+
+  destination_full_path:
+    plugin: concat
+    delimiter: /
+    source:
+      - constants/destination_base_path
+      - filename
+  uri:
+    plugin: file_copy
+    source:
+      - '@source_full_path'
+      - '@destination_full_path'
+
+destination:
+  plugin: entity:file
+
+migration_dependencies: {}

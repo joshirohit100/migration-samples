@@ -1,0 +1,60 @@
+id: users
+label: Users migration example
+migration_group: default
+
+source:
+  plugin: url
+  urls: "http://local.drupal8.com/migration_files/sample_module_data/separate_files/users.xml"
+  data_fetcher_plugin: http
+  data_parser_plugin: xml
+  item_selector: /users/user
+
+  fields:
+    -
+      name: uname
+      label: 'user name'
+      selector: uname
+    -
+      name: uid
+      label: 'Unique Id'
+      selector: uid
+    -
+      name: email
+      label: 'email'
+      selector: email
+    -
+      name: fname
+      label: 'First name'
+      selector: name
+    -
+      name: roles
+      labels: 'roles'
+      selector: roles
+
+  ids:
+    uid:
+      type: integer
+
+
+process:
+  name: uname
+  mail: email
+  field_user_name: fname
+  status:
+    plugin: default_value
+    default_value: 1
+  roles:
+    -
+      plugin: explode
+      delimiter: ','
+      source: roles
+    -
+      plugin: static_map
+      map:
+        1: administrator
+        2: site_builder
+
+destination:
+  plugin: entity:user
+
+migration_dependencies: {}

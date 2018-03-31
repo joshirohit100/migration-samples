@@ -1,0 +1,129 @@
+id: books
+label: Books migration example
+migration_group: default
+
+source:
+  plugin: url
+  urls: "http://local.drupal8.com/migration_files/sample_module_data/separate_files/books.xml"
+  data_fetcher_plugin: http
+  data_parser_plugin: xml
+  item_selector: /books/book
+
+  constants:
+    slash: '/'
+
+  fields:
+    -
+      name: title
+      label: 'title'
+      selector: title
+    -
+      name: bid
+      label: 'Unique Id'
+      selector: bid
+    -
+      name: author
+      label: 'author'
+      selector: user
+    -
+      name: media
+      label: 'media'
+      selector: media
+    -
+      name: category
+      label: 'category'
+      selector: category
+    -
+      name: created_on
+      label: 'created on'
+      selector: created_on
+    -
+      name: alias
+      labels: 'alias'
+      selector: alias
+
+  ids:
+    bid:
+      type: integer
+
+
+process:
+  title: title
+
+  type:
+    plugin: default_value
+    default_value: migration_sample
+
+  field_my_body/target_id:
+    -
+      plugin: migration_lookup
+      migration: bodytoparagraph
+      no_stub: true
+      source: bid
+    -
+      plugin: extract
+      index:
+        - 0
+
+  field_my_body/target_revision_id:
+    -
+      plugin: migration_lookup
+      migration: bodytoparagraph
+      no_stub: true
+      source: bid
+    -
+      plugin: extract
+      index:
+        - 1
+
+  created:
+    plugin: format_date
+    from_format: 'Y-m-d H:i:s'
+    to_format: 'U'
+    source: created_on
+
+  changed: '@created'
+
+  field_author:
+    plugin: migration_lookup
+    migration: users
+    no_stub: true
+    source: author
+
+  field_boook_image:
+    plugin: migration_lookup
+    migration: media
+    no_stub: true
+    source: media
+
+  field_category:
+    -
+      plugin: explode
+      delimiter: ','
+      source: category
+    -
+      plugin: migration_lookup
+      migration: category
+      no_stub: true
+
+  path:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: alias
+    -
+      plugin: concat
+      delimiter: null
+      source:
+        - constants/slash
+        - alias
+
+destination:
+  plugin: entity:node
+
+migration_dependencies:
+  required:
+    - users
+    - media
+    - category
+    - bodytoparagraph

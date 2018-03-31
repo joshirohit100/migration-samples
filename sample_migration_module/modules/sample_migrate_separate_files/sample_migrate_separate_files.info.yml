@@ -1,0 +1,8 @@
+name: 'Sample migrate separate files'
+type: module
+description: 'Sample migration module with separate source for each entity.'
+package: Migration
+core: 8.x
+version: 8.x-1.x
+dependencies:
+  - migrate_plus

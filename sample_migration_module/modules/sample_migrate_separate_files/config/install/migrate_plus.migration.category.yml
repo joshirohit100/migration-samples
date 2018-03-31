@@ -1,0 +1,38 @@
+id: category
+label: Category migration example
+migration_group: default
+
+source:
+  plugin: url
+  urls: "http://local.drupal8.com/migration_files/sample_module_data/separate_files/catrgories.xml"
+  data_fetcher_plugin: http
+  data_parser_plugin: xml
+  item_selector: /book_categories/category
+
+  fields:
+    -
+      name: id
+      label: 'id'
+      selector: id
+    -
+      name: title
+      label: 'Title'
+      selector: title
+
+  ids:
+    id:
+      type: integer
+
+
+process:
+
+  vid:
+      plugin: default_value
+      default_value: tags
+
+  name: title
+
+destination:
+  plugin: entity:taxonomy_term
+
+migration_dependencies: {}
