@@ -15,4 +15,5 @@ How to use this module
 13. Create a new directory in your project root with name 'migration_files'.
 14. Copy the 'sample_module_data' directory from this module to 'migration_files' directory.
 15. We assuming that the files in 'migration_files' can be accessed by url 'http://local.drupal8.com/migration_files'.
-16. Now just run command for migration 'drush mim books --execute-dependencies'
+
+
