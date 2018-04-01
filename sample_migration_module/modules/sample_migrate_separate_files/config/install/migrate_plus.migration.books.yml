@@ -79,7 +79,7 @@ process:
   created:
     plugin: format_date
     from_format: 'Y-m-d H:i:s'
-    to_format: 'U'
+    to_format: 'U' # 'U' is unix timestamp format in php.
     source: created_on
 
   changed: '@created'
